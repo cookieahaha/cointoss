@@ -17,7 +17,6 @@ public class Cointoss extends Activity{
     setContentView(R.layout.main);
   }
 
-
   public void guess(View view){
     guess = null;
     int id = view.getId();
@@ -27,6 +26,7 @@ public class Cointoss extends Activity{
     if(id==R.id.button_TAIL){
       guess = Coin.TAIL;
     }
+    game();
   }
 
   public void compare(Coin guess,Coin coin){
