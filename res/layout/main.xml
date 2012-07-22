@@ -15,19 +15,19 @@
         android:layout_height="0dp"
         android:layout_weight="5">
 
-      <ImageButton android:id="@+id/button_ROCK"
+      <ImageButton android:id="@+id/button_HEAD"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:onClick="guess" 
-            android:src="@drawable/button_HEAD" />
+            android:src="@drawable/button_head" />
 
-      <ImageButton android:id="@+id/button_ROCK"
+      <ImageButton android:id="@+id/button_TAIL"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:onClick="guess" 
-            android:src="@drawable/button_TAIL" />
+            android:src="@drawable/button_tail" />
 
   </LinearLayout>
 
