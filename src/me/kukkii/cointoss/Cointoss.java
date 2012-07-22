@@ -29,6 +29,16 @@ public class Cointoss extends Activity{
     game();
   }
 
+  public void coin(){
+    int random = (int)(Math.random()*2);
+    if(random == 1){
+      coin = Coin.HEAD;
+    }
+    else{
+      coin = Coin.TAIL;
+    }
+  }
+
   public void compare(Coin guess,Coin coin){
     if(guess == coin){
       result = 1;   //win
@@ -39,7 +49,7 @@ public class Cointoss extends Activity{
   }
 
   public void showResult(int result){
-    TextView textView = new TextView(this);
+    TextView textView = (TextView) findViewById(R.id.text);
     if(result == 1){
       textView.setText("win");
     }
