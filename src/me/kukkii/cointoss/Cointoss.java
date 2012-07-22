@@ -3,6 +3,7 @@ package me.kukkii.cointoss;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class Cointoss extends Activity{
 
@@ -40,10 +41,10 @@ public class Cointoss extends Activity{
   public void showResult(int result){
     TextView textView = new TextView(this);
     if(result == 1){
-      textView.setText(win);
+      textView.setText("win");
     }
     if(result == 0){
-      textView.setText(lose);
+      textView.setText("lose");
     }
   }
 
