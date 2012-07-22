@@ -59,6 +59,7 @@ public class Cointoss extends Activity{
   }
 
   public void game(){
+    coin();
     compare(guess,coin);
     showResult(result);
   }
