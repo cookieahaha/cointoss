@@ -10,7 +10,8 @@ public class Cointoss extends Activity{
   private Coin guess;
   private Coin coin;
   private int result = -1;
-
+  private String text= "";
+  private int nLines = 0;
 
   public void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
@@ -50,12 +51,19 @@ public class Cointoss extends Activity{
 
   public void showResult(int result){
     TextView textView = (TextView) findViewById(R.id.text);
+    nLines += 1;
+    if (nLines > 10) {
+      nLines -= 10;
+      text = "";
+    }
+    text += "Your guess is " + ((guess == Coin.HEAD)?"FRONT":"BACK") + ".";
     if(result == 1){
-      textView.setText("win");
+      text += " You WON!\n";
     }
     if(result == 0){
-      textView.setText("lose");
+      text += " You LOST!\n";
     }
+    textView.setText(text);
   }
 
   public void game(){
