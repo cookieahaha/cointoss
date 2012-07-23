@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     >
     <TextView android:id="@+id/text"
-        android:layout_weight="5"
+        android:layout_weight="2"
         android:layout_height="0dp"
         android:layout_width="fill_parent"/>
 
@@ -13,21 +13,26 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_weight="1"
+        android:scaleType="fitEnd" >
 
       <ImageButton android:id="@+id/button_HEAD"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:scaleType="fitEnd"
+            android:background="#ffffff"
             android:onClick="guess" 
-            android:src="@drawable/button_head" />
+            android:src="@drawable/us_dollar_coin_front" />
 
       <ImageButton android:id="@+id/button_TAIL"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:scaleType="fitEnd"
+            android:background="#ffffff"
             android:onClick="guess" 
-            android:src="@drawable/button_tail" />
+            android:src="@drawable/us_dollar_coin_back" />
 
   </LinearLayout>
 
