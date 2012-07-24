@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 public class SplashActivity extends Activity{
 
@@ -46,6 +47,11 @@ public class SplashActivity extends Activity{
         _active = false;
     }
     return true;
+  }
+
+  public void play(View view) {
+    Intent intent = new Intent(this, Cointoss.class);
+    startActivity(intent);
   }
 
 }
