@@ -16,6 +16,7 @@ public class SplashActivity extends Activity{
     super.onCreate(savedInstanceState);
     setContentView(R.layout.splash);
 
+   /*
     final Intent intent = new Intent(this, Cointoss.class);
 
     Thread splashTread = new Thread() {
@@ -38,9 +39,11 @@ public class SplashActivity extends Activity{
       }
     };
     splashTread.start();
+   */
 
   }
 
+  /*
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -48,9 +51,35 @@ public class SplashActivity extends Activity{
     }
     return true;
   }
+  */
 
   public void play(View view) {
     Intent intent = new Intent(this, Cointoss.class);
+    CoinType type = CoinType.UNKNOWN;
+    switch (view.getId()) {
+    case R.id.button_penny :
+      type = CoinType.PENNY;
+      break;
+    case R.id.button_nickel :
+      type = CoinType.NICKEL;
+      break;
+    case R.id.button_dime :
+      type = CoinType.DIME;
+      break;
+    case R.id.button_quarter :
+      type = CoinType.QUARTER;
+      break;
+    case R.id.button_half :
+      type = CoinType.HALF;
+      break;
+    case R.id.button_dollar :
+      type = CoinType.DOLLAR;
+      break;
+    default :
+      type = CoinType.UNKNOWN;
+      break;
+    }
+    intent.putExtra("type", type);
     startActivity(intent);
   }
 

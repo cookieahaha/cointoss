@@ -1,12 +1,15 @@
 package me.kukkii.cointoss;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Cointoss extends Activity{
 
+  private CoinType type;
   private Coin guess;
   private Coin coin;
   private int result = -1;
@@ -16,6 +19,41 @@ public class Cointoss extends Activity{
   public void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
+
+    Intent intent = getIntent();
+    type = (CoinType) intent.getSerializableExtra("type");
+    int frontId = 0;
+    int backId = 0;
+    switch (type) {
+    case PENNY :
+      frontId = R.drawable.us_penny_front;
+       backId = R.drawable.us_penny_back;
+      break;
+    case NICKEL :
+      frontId = R.drawable.us_nickel_front;
+       backId = R.drawable.us_nickel_back;
+      break;
+    case DIME :
+      frontId = R.drawable.us_dime_front;
+       backId = R.drawable.us_dime_back;
+      break;
+    case QUARTER :
+      frontId = R.drawable.us_quarter_front;
+       backId = R.drawable.us_quarter_back;
+      break;
+    case HALF :
+      frontId = R.drawable.us_half_dollar_front;
+       backId = R.drawable.us_half_dollar_back;
+      break;
+    case DOLLAR :
+      frontId = R.drawable.us_dollar_coin_front;
+       backId = R.drawable.us_dollar_coin_back;
+      break;
+    }
+    ImageButton frontButton = (ImageButton) findViewById(R.id.button_HEAD);
+    frontButton.setImageResource(frontId);
+    ImageButton  backButton = (ImageButton) findViewById(R.id.button_TAIL);
+     backButton.setImageResource(backId);
   }
 
   public void guess(View view){
