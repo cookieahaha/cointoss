@@ -32,8 +32,7 @@
             android:layout_width="0dp"
             android:scaleType="fitEnd"
             android:background="#ffffff"
-            android:onClick="guess" 
-            android:src="@drawable/us_dollar_coin_front" />
+            android:onClick="guess" />
 
       <ImageButton android:id="@+id/button_TAIL"
             android:layout_height="fill_parent"
@@ -41,8 +40,7 @@
             android:layout_width="0dp"
             android:scaleType="fitEnd"
             android:background="#ffffff"
-            android:onClick="guess" 
-            android:src="@drawable/us_dollar_coin_back" />
+            android:onClick="guess" />
 
   </LinearLayout>
 
