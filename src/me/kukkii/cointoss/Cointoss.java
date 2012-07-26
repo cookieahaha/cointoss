@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import com.google.ads.*;
 
 public class Cointoss extends Activity{
 
@@ -16,6 +17,9 @@ public class Cointoss extends Activity{
   public void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
+
+    AdView adView = (AdView)this.findViewById(R.id.adView);
+    adView.loadAd(new AdRequest());
   }
 
   public void guess(View view){

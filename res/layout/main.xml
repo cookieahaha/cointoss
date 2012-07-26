@@ -4,6 +4,16 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+
+    <com.google.ads.AdView xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
+                         android:id="@+id/adView"
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         googleads:adUnitId="a150104ecfd4fa8"
+                         googleads:adSize="BANNER"
+                         googleads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID"
+                         googleads:loadAdOnCreate="true"/>
+
     <TextView android:id="@+id/text"
         android:layout_weight="2"
         android:layout_height="0dp"

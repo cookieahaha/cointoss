@@ -3,6 +3,7 @@
       package="me.kukkii.cointoss"
       android:versionCode="1"
       android:versionName="1.0">
+
     <application android:label="@string/app_name" android:icon="@drawable/girl_safari">
         <activity android:name="SplashActivity"
                   android:label="@string/app_name">
@@ -12,5 +13,11 @@
             </intent-filter>
         </activity>
         <activity android:name="me.kukkii.cointoss.Cointoss" />
-    </application>
+        <activity android:name="com.google.ads.AdActivity"
+              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/> 
+   </application>
+  
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 </manifest>
