@@ -23,105 +23,71 @@ import android.widget.ImageView;
 
 public class SoundFragment extends Fragment implements OnClickListener {
 
-    private SoundPool soundPool;
-    private int soundId = 0;
-    private int streamId = 0;
-    boolean loaded = false;
-
-    ImageButton button = null;
-    boolean current = false;
+    ImageButton musicButton = null;
+    ImageButton soundButton = null;
+    SoundManager manager = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (manager == null) {
+          SoundManager.setContext( getActivity() );
+          manager = SoundManager.getSoundManager();
+        }
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.sound_fragment, container, false);
     }
 
     public void onStart() {
       super.onStart();
-      button = (ImageButton) getActivity().findViewById(R.id.sound_button);
-      button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
-      button.setOnClickListener(this);
 
-      if (! loaded) {
-        // Context context = getApplicationContext();
-        Activity activity = getActivity();
-        activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        // Load the sound
-        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-        soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-          @Override
-          public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-            loaded = true;
-          }
-        });
-        soundId = soundPool.load(activity, R.raw.bigfish_104_world_hiphop_drums, 1);
-      }
+      musicButton = (ImageButton) getActivity().findViewById(R.id.sound_button);
+      musicButton.setImageResource(manager.isPlaying()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+      musicButton.setOnClickListener(this);
+
+      soundButton = (ImageButton) getActivity().findViewById(R.id.sound_button);
+      soundButton.setImageResource(manager.isSounding()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+      soundButton.setOnClickListener(this);
     }
 
     public void onResume() {
-        super.onResume();
-        if (current) {
-          soundOn();
-          button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
-        }
+      super.onResume();
+
+      if (manager.isPlaying()) {
+        manager.startPlay();
+        musicButton.setImageResource(manager.isPlaying()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+      }
     }
 
     public void onPause() {
-        super.onPause();
-        if (current) {
-          soundOff();
-          current = true; // for onResume
-        }
-    }
+      super.onPause();
 
-    public void soundOn() {
-        // Getting the user sound settings
-        Activity activity = getActivity();
-        AudioManager audioManager = (AudioManager) activity.getSystemService(Activity.AUDIO_SERVICE);
-        float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        float volume = actualVolume / maxVolume;
-        // Is the sound loaded already?
-        if (loaded) {
-          Log.i("Test", "Start playing sound ...");
-          if (streamId == 0) {
-            streamId = soundPool.play(soundId, volume, volume, 1, -1, 1f);
-                                                                 // -1 for loop playback
-            if (streamId != 0) {
-              Log.i("Test", "Success, playing sound");
-              current = true;
-            }
-            else {
-              Log.e("Test", "Failed to play");
-              current = false;
-            }
-          }
-          else {
-            soundPool.resume(streamId);
-            current = true;
-          }
-        }
-        else {
-          Log.e("Test", "Not loaded, failed to play");
-          current = false;
-        }
-    }
-
-    public void soundOff() {
-        soundPool.pause(streamId);
-        current = false;
-        Log.i("Test", "Stopped playing");
+      if (manager.isPlaying()) {
+        manager.stopPlay();
+      }
     }
 
     public void onClick(View view) {
-        if (current) {
-          soundOff();
+      if (view == musicButton) {
+        if (manager.isPlaying()) {
+          manager.stopPlay();
+          manager.setPlaying(false);
         }
         else {
-          soundOn();
+          manager.startPlay();
+          manager.setPlaying(true);
         }
-        button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+        musicButton.setImageResource(manager.isPlaying()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+      }
+      else {
+        if (manager.isSounding()) {
+          manager.setSounding(false);
+        }
+        else {
+          manager.setSounding(true);
+        }
+        soundButton.setImageResource(manager.isSounding()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
+      }
     }
 
 }

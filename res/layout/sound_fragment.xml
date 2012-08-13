@@ -4,6 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+    <ImageButton android:id="@+id/music_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000" />
     <ImageButton android:id="@+id/sound_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
