@@ -17,7 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -28,7 +28,7 @@ public class SoundFragment extends Fragment implements OnClickListener {
     private int streamId = 0;
     boolean loaded = false;
 
-    Button button = null;
+    ImageButton button = null;
     boolean current = false;
 
     @Override
@@ -39,8 +39,8 @@ public class SoundFragment extends Fragment implements OnClickListener {
 
     public void onStart() {
       super.onStart();
-      button = (Button) getActivity().findViewById(R.id.sound_button);
-      button.setText(current?"ON":"OFF");
+      button = (ImageButton) getActivity().findViewById(R.id.sound_button);
+      button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
       button.setOnClickListener(this);
 
       if (! loaded) {
@@ -63,7 +63,7 @@ public class SoundFragment extends Fragment implements OnClickListener {
         super.onResume();
         if (current) {
           soundOn();
-          button.setText(current?"ON":"OFF");
+          button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
         }
     }
 
@@ -115,15 +115,13 @@ public class SoundFragment extends Fragment implements OnClickListener {
     }
 
     public void onClick(View view) {
-        // Button button = (Button) view;
-        // String text = button.getText().toString();
         if (current) {
           soundOff();
         }
         else {
           soundOn();
         }
-        button.setText(current?"ON":"OFF");
+        button.setImageResource(current?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
     }
 
 }
