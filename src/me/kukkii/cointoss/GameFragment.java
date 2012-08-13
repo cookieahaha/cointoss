@@ -3,12 +3,17 @@ package me.kukkii.cointoss;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.google.ads.*;
 
-public class Cointoss extends Activity{
+public class GameFragment extends Fragment implements OnClickListener {
 
   private CoinType type;
   private Coin guess;
@@ -17,15 +22,19 @@ public class Cointoss extends Activity{
   private String text= "";
   private int nLines = 0;
 
-  public void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    Log.i("cointoss", "Bundle saveInstanceState=" + savedInstanceState);
+    // type = (CoinType) savedInstanceState.getSerializable("type");
+    type = CoinType.QUARTER;
 
-    AdView adView = (AdView)this.findViewById(R.id.adView);
-    adView.loadAd(new AdRequest());
+    // Inflate the layout for this fragment
+    return inflater.inflate(R.layout.game_fragment, container, false);
+  }
 
-    Intent intent = getIntent();
-    type = (CoinType) intent.getSerializableExtra("type");
+  public void onStart() {
+    super.onStart();
+
     int frontId = 0;
     int backId = 0;
     switch (type) {
@@ -54,13 +63,19 @@ public class Cointoss extends Activity{
        backId = R.drawable.us_dollar_coin_back;
       break;
     }
-    ImageButton frontButton = (ImageButton) findViewById(R.id.button_HEAD);
+
+    ImageButton frontButton = (ImageButton) getActivity().findViewById(R.id.button_HEAD);
     frontButton.setImageResource(frontId);
-    ImageButton  backButton = (ImageButton) findViewById(R.id.button_TAIL);
-     backButton.setImageResource(backId);
+    frontButton.setClickable(true);
+    frontButton.setOnClickListener(this);
+
+    ImageButton  backButton = (ImageButton) getActivity().findViewById(R.id.button_TAIL);
+    backButton.setImageResource(backId);
+    backButton.setClickable(true);
+    backButton.setOnClickListener(this);
   }
 
-  public void guess(View view){
+  public void onClick(View view){
     guess = null;
     int id = view.getId();
     if(id==R.id.button_HEAD){
@@ -92,7 +107,7 @@ public class Cointoss extends Activity{
   }
 
   public void showResult(int result){
-    TextView textView = (TextView) findViewById(R.id.text);
+    TextView textView = (TextView) getActivity().findViewById(R.id.text);
     nLines += 1;
     if (nLines > 10) {
       nLines -= 10;

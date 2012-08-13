@@ -5,11 +5,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/girl_safari"
     >
-    <!-- ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/girl_safari" / -->
+
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -24,8 +20,7 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="PENNY (1¢)" 
-        android:onClick="play" />
+        android:text="PENNY (1¢)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -40,8 +35,7 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="NICKEL (5¢)" 
-        android:onClick="play" />
+        android:text="NICKEL (5¢)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -56,8 +50,7 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="DIME (10¢)" 
-        android:onClick="play" />
+        android:text="DIME (10¢)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -72,8 +65,7 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="QUARTER (25¢)" 
-        android:onClick="play" />
+        android:text="QUARTER (25¢)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -88,8 +80,7 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="HALF (50¢)" 
-        android:onClick="play" />
+        android:text="HALF (50¢)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
@@ -104,12 +95,11 @@
         android:textColor="#ffffffff" 
         android:textSize="30sp" 
         android:textStyle="bold" 
-        android:text="DOLLAR ($1)" 
-        android:onClick="play" />
+        android:text="DOLLAR ($1)" />
     <Space xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" 
         android:layout_height="0dp" 
         android:layout_weight="3" 
         android:background="#00000000" />
-    />
+
 </LinearLayout>
