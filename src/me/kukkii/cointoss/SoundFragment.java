@@ -41,7 +41,7 @@ public class SoundFragment extends Fragment implements OnClickListener {
     public void onStart() {
       super.onStart();
 
-      musicButton = (ImageButton) getActivity().findViewById(R.id.sound_button);
+      musicButton = (ImageButton) getActivity().findViewById(R.id.music_button);
       musicButton.setImageResource(manager.isPlaying()?R.drawable.sound_on_120px_vista_kmixdocked:R.drawable.sound_off_120px_vista_kmixdocked_error);
       musicButton.setOnClickListener(this);
 
