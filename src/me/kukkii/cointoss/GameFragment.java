@@ -25,8 +25,8 @@ public class GameFragment extends Fragment implements OnClickListener {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     Log.i("cointoss", "Bundle saveInstanceState=" + savedInstanceState);
-    // type = (CoinType) savedInstanceState.getSerializable("type");
-    type = CoinType.QUARTER;
+
+    type = (CoinType) getArguments().getSerializable("type");
 
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.game_fragment, container, false);
