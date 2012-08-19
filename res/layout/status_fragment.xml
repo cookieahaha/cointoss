@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    >
+
+    <TextView android:id="@+id/point_field"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
+    <TextView android:id="@+id/win_field"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
+    <TextView android:id="@+id/game_field"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
+    <TextView android:id="@+id/seq_field"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"/>
+
+</LinearLayout>

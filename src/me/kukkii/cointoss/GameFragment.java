@@ -22,6 +22,10 @@ public class GameFragment extends Fragment implements OnClickListener {
   private String text= "";
   private int nLines = 0;
 
+  private StatusFragment statusFragment = null;
+  private int seqWin = 0;
+  private int point = 1;
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     Log.i("cointoss", "Bundle saveInstanceState=" + savedInstanceState);
@@ -127,6 +131,25 @@ public class GameFragment extends Fragment implements OnClickListener {
     coin();
     compare(guess,coin);
     showResult(result);
+
+    if (statusFragment == null) {
+      statusFragment = (StatusFragment) getFragmentManager().findFragmentById(R.id.status_fragment);
+    }
+    statusFragment.addGame(1);
+    if (result > 0) {
+      // WIN
+      statusFragment.addWin(1);
+      statusFragment.addPoint(point);
+      seqWin += 1;
+      statusFragment.setSeq(seqWin);
+      point *= 2;
+    }
+    else {
+      // LOSE
+      seqWin = 0;
+      point = 1;
+    }
+    statusFragment.setFields();
   }
 
 }
